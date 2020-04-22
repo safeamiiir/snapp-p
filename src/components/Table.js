@@ -20,9 +20,12 @@ function Table() {
       </thead>
       <tbody>
         {players &&
-          players.map((player) => (
+          players.map((player, index) => (
             <tr>
-                {fields && fields.map((field) =>
+              <td>
+                {index + 1}
+              </td>
+                {fields && fields.slice(1).map((field) =>
                 <td>
                   {player[field]}
                 </td>
