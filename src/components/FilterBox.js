@@ -37,9 +37,11 @@ function FilterBox() {
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
               <div class="card-body">
                 {nationality.map((item) => (
-                  <div key={item}>
-                    <input type="checkbox" style={{marginRight: 10}}/>
-                    <label htmlFor="subscribeNews">{item}</label>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" />
+                    <label class="form-check-label" for="inlineCheckbox1">
+                      {item}
+                    </label>
                   </div>
                 ))}
               </div>
@@ -62,10 +64,12 @@ function FilterBox() {
             </div>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
               <div class="card-body">
-              {clubs.map((item) => (
-                  <div key={item}>
-                    <input type="checkbox" style={{marginRight: 10}}/>
-                    <label htmlFor="subscribeNews">{item}</label>
+                {clubs.map((item) => (
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" />
+                    <label class="form-check-label" for="inlineCheckbox1">
+                      {item}
+                    </label>
                   </div>
                 ))}
               </div>
@@ -88,10 +92,12 @@ function FilterBox() {
             </div>
             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
               <div class="card-body">
-              {team_position.map((item) => (
-                  <div key={item}>
-                    <input type="checkbox" style={{marginRight: 10}}/>
-                    <label htmlFor="subscribeNews">{item}</label>
+                {team_position.map((item) => (
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" />
+                    <label class="form-check-label" for="inlineCheckbox1">
+                      {item}
+                    </label>
                   </div>
                 ))}
               </div>
