@@ -1,20 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import Table from "../components/Table";
 import FilterBox from "../components/FilterBox";
 import SortBox from "../components/SortBox";
-function App() {
-  // Define your state
+import players from "../data/Players";
 
+function App() {
+  let allPlayers = players.map((player, index) => {
+    player.index = index
+    return player
+  })
+  // Define your state
+  const fields = ["age", "short_name", "value"];
+  const [clicked, setClicked] = useState(fields.map((field) => ({ id: field, state: 0 })));
+  const [all, setAll] = useState(allPlayers);
+  console.log('all', all)
   const changeSort = (_selectedSort) => {
-   // ...
+    // ...
   };
 
-  const changeFilters = (/*YOUR_PARAMETERS*/) => {
-   // ...
+  const changeFilters = (key) => {
+    // 0 => no Change
+    // 1 => Ascending
+    // 2 => Descending
+    if (clicked[key]["state"] === 0) {
+      setAll(all.sort((a, b) => b[fields[key]] > a[fields[key]] ? 1 : -1 ));
+    } else if (clicked[key]["state"] === 1) {
+      setAll(all.sort((a, b) => a[fields[key]] > b[fields[key]] ? 1 : -1 ));
+    } else {
+      setAll(all.sort((a, b) => a['index'] - b['index']));
+    }
   };
 
   const renderTable = () => {
-   return <Table/ >;
+    return <Table players={all} />;
   };
 
   return (
@@ -24,7 +42,7 @@ function App() {
           <FilterBox />
         </div>
         <div className="col-lg-10 col-12">
-          <SortBox />
+          <SortBox clicked={clicked} setClicked={setClicked} changeFilters={changeFilters} />
           {renderTable()}
         </div>
       </div>

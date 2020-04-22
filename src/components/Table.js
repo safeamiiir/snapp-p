@@ -1,7 +1,6 @@
 import React from "react";
-import players from "../data/Players";
 
-function Table() {
+function Table({players}) {
   const fields = [
     "#",
     "short_name",
@@ -16,17 +15,17 @@ function Table() {
   return (
     <table id="players-table" className="table table-bordered">
       <thead>
-        <tr>{fields && fields.map((field) => <th>{field}</th>)}</tr>
+        <tr>{fields && fields.map((field) => <th key={field}>{field}</th>)}</tr>
       </thead>
       <tbody>
         {players &&
           players.map((player, index) => (
-            <tr>
+            <tr key={index}>
               <td>
                 {index + 1}
               </td>
                 {fields && fields.slice(1).map((field) =>
-                <td>
+                <td key={field}>
                   {player[field]}
                 </td>
                 )}

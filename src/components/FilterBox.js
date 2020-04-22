@@ -1,8 +1,9 @@
 import React from "react";
-
+import nationality from "../data/Nationality";
+import clubs from "../data/Clubs";
+import team_position from "../data/TeamPositions";
 function FilterBox() {
   const filters = ["nationality", "club", "team_position"];
-
 
   const changeFilter = () => {
     // Your Code ...
@@ -29,19 +30,18 @@ function FilterBox() {
                   aria-expanded="true"
                   aria-controls="collapseOne"
                 >
-                  Collapsible Group Item #1
+                  nationality
                 </button>
               </h2>
             </div>
-            <div
-              id="collapseOne"
-              class="collapse show"
-              aria-labelledby="headingOne"
-              data-parent="#accordionExample"
-            >
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
               <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life
-                accusamus terry richardson ad squid.
+                {nationality.map((item) => (
+                  <div key={item}>
+                    <input type="checkbox" style={{marginRight: 10}}/>
+                    <label htmlFor="subscribeNews">{item}</label>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -56,19 +56,18 @@ function FilterBox() {
                   aria-expanded="false"
                   aria-controls="collapseTwo"
                 >
-                  Collapsible Group Item #2
+                  club
                 </button>
               </h2>
             </div>
-            <div
-              id="collapseTwo"
-              class="collapse"
-              aria-labelledby="headingTwo"
-              data-parent="#accordionExample"
-            >
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
               <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life
-                accusamus terry richardson ad squid.
+              {clubs.map((item) => (
+                  <div key={item}>
+                    <input type="checkbox" style={{marginRight: 10}}/>
+                    <label htmlFor="subscribeNews">{item}</label>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -83,19 +82,18 @@ function FilterBox() {
                   aria-expanded="false"
                   aria-controls="collapseThree"
                 >
-                  Collapsible Group Item #3
+                  team_position
                 </button>
               </h2>
             </div>
-            <div
-              id="collapseThree"
-              class="collapse"
-              aria-labelledby="headingThree"
-              data-parent="#accordionExample"
-            >
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
               <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life
-                accusamus terry richardson ad squid.
+              {team_position.map((item) => (
+                  <div key={item}>
+                    <input type="checkbox" style={{marginRight: 10}}/>
+                    <label htmlFor="subscribeNews">{item}</label>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

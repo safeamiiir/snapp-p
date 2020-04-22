@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 
-function SortBox() {
+function SortBox({clicked, setClicked, changeFilters}) {
   const fields = ["age", "short_name", "value"];
-  const [clicked, setClicked] = useState(fields.map((field) => ({ id: field, state: 0 })));
 
   const changeSelectedSort = (field) => {
     let newClicked = [...clicked];
     let index = clicked.findIndex((item) => item.id === field);
     newClicked[index] = { id: field, state: (newClicked[index]["state"] + 1) % 3 };
     setClicked(newClicked);
+    changeFilters(index)
   };
 
   const setClassName = (field) => {
@@ -28,6 +28,7 @@ function SortBox() {
     <div id="sort-box-container" className="d-flex py-2">
       {fields.map((field) => (
         <button
+          key={field}
           id={`sort-btn-${field}`}
           type="button"
           className={setClassName(field)}
