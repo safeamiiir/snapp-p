@@ -13,7 +13,6 @@ function App() {
   const fields = ["age", "short_name", "value"];
   const [clicked, setClicked] = useState(fields.map((field) => ({ id: field, state: 0 })));
   const [all, setAll] = useState(allPlayers);
-  console.log("all", all);
   const changeSort = (key) => {
     // 0 => no Change
     // 1 => Ascending
