@@ -2,7 +2,6 @@ import React from "react";
 import Table from "../components/Table";
 import FilterBox from "../components/FilterBox";
 import SortBox from "../components/SortBox";
-
 function App() {
   // Define your state
 
@@ -15,7 +14,7 @@ function App() {
   };
 
   const renderTable = () => {
-   return null;
+   return <Table/ >;
   };
 
   return (

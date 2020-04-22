@@ -2,8 +2,6 @@ import React from "react";
 import players from "../data/Players";
 
 function Table() {
-  console.log("players", players);
-  // Use this for showing thead
   const fields = [
     "#",
     "short_name",
