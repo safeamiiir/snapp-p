@@ -1,6 +1,6 @@
 import React from "react";
 
-function SortBox({clicked, setClicked, changeFilters}) {
+function SortBox({clicked, setClicked, changeSort}) {
   const fields = ["age", "short_name", "value"];
 
   const changeSelectedSort = (field) => {
@@ -8,7 +8,7 @@ function SortBox({clicked, setClicked, changeFilters}) {
     let index = clicked.findIndex((item) => item.id === field);
     newClicked[index] = { id: field, state: (newClicked[index]["state"] + 1) % 3 };
     setClicked(newClicked);
-    changeFilters(index)
+    changeSort(index)
   };
 
   const setClassName = (field) => {
