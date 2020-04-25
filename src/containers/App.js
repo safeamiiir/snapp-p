@@ -13,6 +13,8 @@ function App() {
   const fields = ["age", "short_name", "value"];
   const [clicked, setClicked] = useState(fields.map((field) => ({ id: field, state: 0 })));
   const [all, setAll] = useState(allPlayers);
+  const [myFilter, setMyFilter] = useState(all);
+
   const changeSort = (key) => {
     // 0 => no Change
     // 1 => Ascending
@@ -26,17 +28,28 @@ function App() {
     }
   };
 
-  const changeFilters = () => {};
+  const changeFilters = (inp, filter) => {
+    for (let property in inp) {
+      if (inp.hasOwnProperty(property) && inp[property]) {
+        console.log('property', property)
+        console.log('filter', filter)
+        setMyFilter(myFilter.filter( item => item[filter] === property))
+      }
+      else {
+        setMyFilter(all)
+      }
+    }
+  };
 
   const renderTable = () => {
-    return <Table players={all} />;
+    return <Table players={myFilter} />;
   };
 
   return (
     <div className="container-fluid my-3">
       <div className="row">
         <div className="col-lg-2 col-12">
-          <FilterBox />
+          <FilterBox changeFilters={changeFilters} />
         </div>
         <div className="col-lg-10 col-12">
           <SortBox clicked={clicked} setClicked={setClicked} changeSort={changeSort} />

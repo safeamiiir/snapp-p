@@ -2,11 +2,13 @@ import React from "react";
 import nationality from "../data/Nationality";
 import clubs from "../data/Clubs";
 import team_position from "../data/TeamPositions";
-function FilterBox() {
+function FilterBox({changeFilters}) {
   const filters = ["nationality", "club", "team_position"];
+  const [itemsList, setItemsList] = React.useState({});
 
-  const changeFilter = () => {
-    // Your Code ...
+  const changeFilter = (e, item, filter) => {
+    setItemsList({ ...itemsList, [item]: itemsList["item"] || itemsList[item] ? false : true });
+    changeFilters({ ...itemsList, [item]: itemsList["item"] || itemsList[item] ? false : true }, filter)
   };
 
   return (
@@ -30,7 +32,7 @@ function FilterBox() {
                   aria-expanded="true"
                   aria-controls="collapseOne"
                 >
-                  nationality
+                  {filters[0]}
                 </button>
               </h2>
             </div>
@@ -38,7 +40,13 @@ function FilterBox() {
               <div class="card-body">
                 {nationality.map((item) => (
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" />
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox1"
+                      value={item}
+                      onChange={(e) => changeFilter(e, item, filters[0])}
+                    />
                     <label class="form-check-label" for="inlineCheckbox1">
                       {item}
                     </label>
@@ -58,7 +66,7 @@ function FilterBox() {
                   aria-expanded="false"
                   aria-controls="collapseTwo"
                 >
-                  club
+                  {filters[1]}
                 </button>
               </h2>
             </div>
@@ -66,7 +74,13 @@ function FilterBox() {
               <div class="card-body">
                 {clubs.map((item) => (
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" />
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox1"
+                      value={item}
+                      onChange={(e) => changeFilter(e, item, filters[1])}
+                    />
                     <label class="form-check-label" for="inlineCheckbox1">
                       {item}
                     </label>
@@ -86,7 +100,7 @@ function FilterBox() {
                   aria-expanded="false"
                   aria-controls="collapseThree"
                 >
-                  team_position
+                  {filters[2]}
                 </button>
               </h2>
             </div>
@@ -94,7 +108,13 @@ function FilterBox() {
               <div class="card-body">
                 {team_position.map((item) => (
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" />
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox1"
+                      value={item}
+                      onChange={(e) => changeFilter(e, item, filters[2])}
+                    />
                     <label class="form-check-label" for="inlineCheckbox1">
                       {item}
                     </label>
